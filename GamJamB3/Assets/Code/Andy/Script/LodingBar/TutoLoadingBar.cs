@@ -91,7 +91,7 @@ public class TutoLoadingBar : MonoBehaviour
     IEnumerator FinTutoE()
     {
         yield return new WaitForSeconds(0.05f);
-        if(slider.value >= 0)
+        if(slider.value >= 0.02f)
         {
             slider.value -= 0.01f;
             StartCoroutine(FinTutoE());
