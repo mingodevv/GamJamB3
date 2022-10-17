@@ -719,6 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pourcentTxt: {fileID: 424841441}
+  slider: {fileID: 1848493737}
 --- !u!1 &1088974539
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,6 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c107c15d91104845a5fcb9329a6940d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SliderValue: 0
   slider: {fileID: 1848493737}
 --- !u!114 &1848493737
 MonoBehaviour:
