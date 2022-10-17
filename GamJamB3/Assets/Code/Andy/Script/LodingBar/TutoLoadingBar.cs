@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class TutoLoadingBar : MonoBehaviour
 {
     int stepTutoNb = 0;
-    int ClickNb = 0;
     float ValueBar = 0f;
     bool EndStep = false;
     bool Click = true;
