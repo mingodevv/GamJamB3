@@ -9,6 +9,9 @@ public class TutoLoadingBar : MonoBehaviour
     int stepTutoNb = 0;
     int ClickNb = 0;
     float ValueBar = 0f;
+    bool EndStep = false;
+    bool Click = true;
+    public  float SliderValue = 0f;
 
     public Slider slider;
 
@@ -18,28 +21,58 @@ public class TutoLoadingBar : MonoBehaviour
         StartCoroutine(BeginProgressE());
     }
 
-    
+    //Update
     void Update()
     {
-        if(ValueBar == 0.5)
+        
+        if(stepTutoNb == 0)
         {
-            ValueBar = 0.51f;
-            StopCoroutine(BeginProgressE());
-            stepTutoNb = 1;
+            slider.value = ValueBar;
         }
-        slider.value = ValueBar;
+        if(stepTutoNb == 2 && EndStep == false )
+        {
+            ValueBar = slider.value;
+            EndStep = true;
+            StartCoroutine(FinTutoE());
+        }
+
+
+        ClickMouseF();
+        StopProgressBar();
+        Step2Begin();
 
     }
-    void OnMouseDown()
+
+    void Step2Begin()
     {
-        if(stepTutoNb == 1)
+        if(slider.value >= 0.98)
         {
-            Debug.Log("OK");
-            for (ClickNb = 0; ClickNb < 10; ClickNb ++)
+            StartCoroutine(WaitEndTutoE());
+            Click = false;
+
+        }
+    }
+    void StopProgressBar()
+    {
+        if (ValueBar >= 0.5)
+        {
+            ValueBar = 0.51f;
+            stepTutoNb = 1;
+            
+
+        }
+    }
+    void ClickMouseF()
+    {
+        if (stepTutoNb == 1 && Click == true)
+        {
+            if (Input.GetMouseButtonDown(0))
             {
-                ClickNb++;
-                slider.value += 0.1f ;
+
+                slider.value += 0.01f;
+
             }
+
         }
     }
     IEnumerator BeginProgressE()
@@ -49,6 +82,20 @@ public class TutoLoadingBar : MonoBehaviour
         {
             ValueBar += 0.01f;
             StartCoroutine(BeginProgressE());
+        }
+    }
+    IEnumerator WaitEndTutoE()
+    {
+        yield return new WaitForSeconds(2f);
+        stepTutoNb = 2;
+    }
+    IEnumerator FinTutoE()
+    {
+        yield return new WaitForSeconds(0.05f);
+        if(slider.value >= 0)
+        {
+            slider.value -= 0.01f;
+            StartCoroutine(FinTutoE());
         }
     }
 }
