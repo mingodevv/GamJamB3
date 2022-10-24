@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor.PackageManager;
+
 
 public class TutoLoadingBar : MonoBehaviour
 {
@@ -11,8 +13,10 @@ public class TutoLoadingBar : MonoBehaviour
     bool EndStep = false;
     bool Click = true;
     public  float SliderValue = 0f;
+    public GameObject pos;
 
     public Slider slider;
+    public GameObject error;
 
 
     void Start()
@@ -34,6 +38,10 @@ public class TutoLoadingBar : MonoBehaviour
             EndStep = true;
             StartCoroutine(FinTutoE());
         }
+        if(ErrorScript.close == true)
+        {
+            StartCoroutine(WaitEndTutoE());
+        }
 
 
         ClickMouseF();
@@ -44,9 +52,15 @@ public class TutoLoadingBar : MonoBehaviour
 
     void Step2Begin()
     {
-        if(slider.value >= 0.98)
+        if(slider.value >= 0.98 && Click == true)
         {
-            StartCoroutine(WaitEndTutoE());
+            for (int i = 0; i < 1; i++)
+            {
+                Vector2 position = pos.transform.position;
+                Instantiate(error, position, Quaternion.identity);
+                
+            }
+            error.transform.SetParent(pos.transform);
             Click = false;
 
         }
@@ -85,7 +99,7 @@ public class TutoLoadingBar : MonoBehaviour
     }
     IEnumerator WaitEndTutoE()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         stepTutoNb = 2;
     }
     IEnumerator FinTutoE()
