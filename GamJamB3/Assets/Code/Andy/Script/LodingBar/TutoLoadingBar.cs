@@ -10,6 +10,7 @@ public class TutoLoadingBar : MonoBehaviour
 {
     int stepTutoNb = 0;
     float ValueBar = 0f;
+    public static float addFloat = 0.51f;
     bool EndStep = false;
     bool Click = true;
     public  float SliderValue = 0f;
@@ -22,31 +23,41 @@ public class TutoLoadingBar : MonoBehaviour
     void Start()
     {
         StartCoroutine(BeginProgressE());
+        ScriptMain.StepGame = 0;
+        stepTutoNb = 0;
+        ValueBar = 0f;
+        EndStep = false;
+        Click = true;
+        SliderValue = 0f;
+        addFloat = 0.51f;
     }
 
     //Update
     void Update()
     {
-        
-        if(stepTutoNb == 0)
+        if(ScriptMain.StepGame == 0)
         {
-            slider.value = ValueBar;
-        }
-        if(stepTutoNb == 2 && EndStep == false )
-        {
-            ValueBar = slider.value;
-            EndStep = true;
-            StartCoroutine(FinTutoE());
-        }
-        if(ErrorScript.close == true)
-        {
-            StartCoroutine(WaitEndTutoE());
-        }
+            if (stepTutoNb == 0)
+            {
+                slider.value = ValueBar;
+            }
+            if (stepTutoNb == 2 && EndStep == false)
+            {
+                ValueBar = slider.value;
+                EndStep = true;
+                StartCoroutine(FinTutoE());
+            }
+            if (ErrorScript.close == true)
+            {
+                StartCoroutine(WaitEndTutoE());
+            }
 
 
-        ClickMouseF();
-        StopProgressBar();
-        Step2Begin();
+            ClickMouseF();
+            StopProgressBar();
+            Step2Begin();
+        }
+       
 
     }
 
@@ -57,11 +68,11 @@ public class TutoLoadingBar : MonoBehaviour
             for (int i = 0; i < 1; i++)
             {
                 Vector2 position = pos.transform.position;
-                Instantiate(error, position, Quaternion.identity);
+                Instantiate(error, position, pos.transform.rotation, pos.transform );
                 
             }
-            error.transform.SetParent(pos.transform);
             Click = false;
+            
 
         }
     }
@@ -79,12 +90,8 @@ public class TutoLoadingBar : MonoBehaviour
     {
         if (stepTutoNb == 1 && Click == true)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-
-                slider.value += 0.01f;
-
-            }
+            slider.value = addFloat;
+            ButtonBarScript.okTuto = true;
 
         }
     }
@@ -99,8 +106,13 @@ public class TutoLoadingBar : MonoBehaviour
     }
     IEnumerator WaitEndTutoE()
     {
-        yield return new WaitForSeconds(1f);
-        stepTutoNb = 2;
+        if(stepTutoNb >= 1)
+        {
+            yield return new WaitForSeconds(1f);
+            stepTutoNb = 2;
+        }
+        
+        
     }
     IEnumerator FinTutoE()
     {
@@ -110,5 +122,13 @@ public class TutoLoadingBar : MonoBehaviour
             slider.value -= 0.01f;
             StartCoroutine(FinTutoE());
         }
+        if(slider.value <= 0.02f)
+        {
+            ErrorScript.close = false;
+            stepTutoNb = 0;
+            ScriptMain.StepGame = 1;
+            StopCoroutine(FinTutoE());
+        }
+
     }
 }

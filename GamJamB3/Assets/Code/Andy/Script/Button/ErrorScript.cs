@@ -10,13 +10,14 @@ public class ErrorScript : MonoBehaviour
     public static bool close = false;
     void Start()
     {
+        close = false;
         error = GetComponent<GameObject>();
     }
 
     
     void Update()
     {
-        
+        Debug.Log(close);
     }
 
     public void CloseWindowsError()
