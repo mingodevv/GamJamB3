@@ -72,7 +72,7 @@ public class TutoLoadingBar : MonoBehaviour
                 
             }
             Click = false;
-            
+            StopAllCoroutines();
 
         }
     }

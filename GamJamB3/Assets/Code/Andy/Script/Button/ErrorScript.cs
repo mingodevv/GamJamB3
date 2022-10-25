@@ -17,11 +17,12 @@ public class ErrorScript : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(close);
+
     }
 
     public void CloseWindowsError()
     {
+        SpawnPopUp.suppPop += 1;
         close = true;
         Destroy(gameObject);
     }

@@ -26,6 +26,11 @@ public class BarDiminuScript : MonoBehaviour
             {
                 ScriptMain.StepGame = -1;
             }
+            if(slider.value >= 0.98)
+            {
+                StopAllCoroutines();
+                ScriptMain.StepGame = 2;
+            }
         }
         
     }
@@ -33,7 +38,7 @@ public class BarDiminuScript : MonoBehaviour
     {
         if(slider.value > 0 && ScriptMain.StepGame == 1)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.3f);
             slider.value -= 0.01f;
             StartCoroutine(no100E());
         }
