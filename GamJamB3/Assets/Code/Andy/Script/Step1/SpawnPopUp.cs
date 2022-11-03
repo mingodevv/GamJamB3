@@ -6,18 +6,20 @@ using static UnityEditor.PlayerSettings;
 
 public class SpawnPopUp : MonoBehaviour
 {
-    int range = 0;
+    static public int range = 0;
     float randomX,randomY;
     float delay;
-    bool ok = false;
+    static public bool ok = false;
     public GameObject errorpop;
     public GameObject pos;
+    public static int plus = 0;
 
     public static int suppPop = 0;
     void Start()
     {
        range = 0;
        suppPop = 1;
+       ok = false;
 
     }
 
@@ -42,10 +44,10 @@ public class SpawnPopUp : MonoBehaviour
     }
     void randomSpawnF()
     {
-        
+        plus = 0;
         range = Random.Range(1, 5);
         delay = Random.Range(1f,3f);  
-        for (int i = 0; i < range; i++)
+        for ( int i = 0; i < range; i++)
         {
             randomX = Random.Range(-50f, 50f);
             randomY = Random.Range(-50f, 50f);
@@ -53,6 +55,7 @@ public class SpawnPopUp : MonoBehaviour
             position.x += randomX;
             position.y += randomY;
             Instantiate(errorpop, position, pos.transform.rotation, pos.transform);
+            plus++;
 
         }
         
@@ -60,6 +63,10 @@ public class SpawnPopUp : MonoBehaviour
     IEnumerator waitForSpawn()
     {
         yield return new WaitForSeconds(delay);
-        randomSpawnF();
+        if(ok == true)
+        {
+            randomSpawnF();
+        }
+        
     }
 }

@@ -30,6 +30,7 @@ public class BarDiminuScript : MonoBehaviour
             {
                 StopAllCoroutines();
                 ScriptMain.StepGame = 2;
+                SpawnPopUp.ok = false;
             }
         }
         
