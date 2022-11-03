@@ -7,6 +7,7 @@ public class BarDiminuScript : MonoBehaviour
 {
     bool ok = false;
     private Slider slider;
+    public GameObject valve;
     void Start()
     {
         slider = GetComponent<Slider>();
@@ -31,6 +32,7 @@ public class BarDiminuScript : MonoBehaviour
                 StopAllCoroutines();
                 ScriptMain.StepGame = 2;
                 SpawnPopUp.ok = false;
+                StartCoroutine(finStep1());
             }
         }
         
@@ -44,5 +46,19 @@ public class BarDiminuScript : MonoBehaviour
             StartCoroutine(no100E());
         }
 
+    }
+    IEnumerator finStep1()
+    {
+        yield return new WaitForSeconds(0.05f);
+        if (slider.value >= 0.2f)
+        {
+            slider.value -= 0.01f;
+            StartCoroutine(finStep1());
+        }
+        if (slider.value <= 0.2f)
+        {
+            valve.SetActive(true);
+            StopCoroutine(finStep1());
+        }
     }
 }

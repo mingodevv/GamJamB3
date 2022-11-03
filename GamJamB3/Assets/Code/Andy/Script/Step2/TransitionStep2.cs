@@ -5,6 +5,7 @@ using UnityEngine;
 public class TransitionStep2 : MonoBehaviour
 {
     Animator animator;
+    public GameObject obj1, obj2, obj3;
     bool ok = false;
     void Start()
     {
@@ -17,6 +18,9 @@ public class TransitionStep2 : MonoBehaviour
         if(ScriptMain.StepGame == 2 && ok == false)
         {
             animator.SetBool("True", true);
+            obj1.SetActive(false);
+            obj2.SetActive(false);
+            obj3.SetActive(false);
             ok = true;
         }
     }
