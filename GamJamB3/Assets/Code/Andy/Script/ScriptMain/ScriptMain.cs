@@ -8,7 +8,6 @@ public class ScriptMain : MonoBehaviour
     void Start()
     {
         StepGame = 0;
-        StopAllCoroutines();
     }
 
     

@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    private void Start()
+    {
+        ScriptMain.StepGame = 0;
+    }
     public void PlayButton()
     {
         SceneManager.LoadScene("MainLoadingMap");

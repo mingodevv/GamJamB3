@@ -50,14 +50,15 @@ public class BarDiminuScript : MonoBehaviour
     IEnumerator finStep1()
     {
         yield return new WaitForSeconds(0.05f);
-        if (slider.value >= 0.2f)
+        if (slider.value >= 0.2f && ScriptMain.StepGame == 2)
         {
             slider.value -= 0.01f;
             StartCoroutine(finStep1());
         }
-        if (slider.value <= 0.2f)
+        else if (slider.value <= 0.2f && ScriptMain.StepGame == 2)
         {
             valve.SetActive(true);
+            ScriptMain.StepGame = 3;
             StopCoroutine(finStep1());
         }
     }

@@ -35,7 +35,9 @@ public class GameOverScript : MonoBehaviour
     {
         
         yield return new WaitForSeconds(3f);
+        StopAllCoroutines();
         SceneManager.LoadScene("MenuMap");
+        
         
 
     }

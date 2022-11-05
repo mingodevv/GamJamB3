@@ -47,7 +47,7 @@ public class TutoLoadingBar : MonoBehaviour
                 EndStep = true;
                 StartCoroutine(FinTutoE());
             }
-            if (ErrorScript.close == true)
+            if (ErrorScript.close == true && Click == false)
             {
                 StartCoroutine(WaitEndTutoE());
             }
@@ -71,21 +71,28 @@ public class TutoLoadingBar : MonoBehaviour
                 Instantiate(error, position, pos.transform.rotation, pos.transform );
                 
             }
+            ButtonBarScript.okTuto = false;
             Click = false;
-            StopAllCoroutines();
 
         }
     }
     void StopProgressBar()
     {
-        if (ValueBar >= 0.5)
+        bool ok = false;
+
+        if (ValueBar >= 0.5 && ok == false)
         {
             ValueBar = 0.51f;
             stepTutoNb = 1;
+            ok = true;
             
-
+        }
+        else
+        {
+            ok = false; 
         }
     }
+
     void ClickMouseF()
     {
         if (stepTutoNb == 1 && Click == true)
@@ -110,6 +117,10 @@ public class TutoLoadingBar : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             stepTutoNb = 2;
+        }
+        else
+        {
+            StopCoroutine(WaitEndTutoE());
         }
         
         

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ErrorScript : MonoBehaviour
 {
-    int range = 0;
+    //int range = 0;
     public static bool close = false;
     public Sprite image1, image2, image3, image4;
     Image Pub;
