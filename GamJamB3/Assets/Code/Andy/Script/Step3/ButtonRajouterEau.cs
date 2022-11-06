@@ -18,9 +18,12 @@ public class ButtonRajouterEau : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(slider.value == 1 && ScriptMain.StepGame == 3)
+        if(slider.value >= 1 && ScriptMain.StepGame == 3)
         {
             ScriptMain.StepGame = 4;
+            slider.value += 1f;
+            Eau.value = 0f;
+            
         }
         if (slider.value <= 1 && ScriptMain.StepGame == 3 && ok == false)
         {
@@ -35,7 +38,7 @@ public class ButtonRajouterEau : MonoBehaviour
         
         if (slider.value <= 1 && ScriptMain.StepGame == 3)
         {
-            Eau.value += 0.02f;
+            Eau.value += 1f;
             slider.value += 0.02f;
         }
         
@@ -44,7 +47,7 @@ public class ButtonRajouterEau : MonoBehaviour
     }
     IEnumerator waterUI()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
 
         if (slider.value <= 1 && ScriptMain.StepGame == 3)
         {
