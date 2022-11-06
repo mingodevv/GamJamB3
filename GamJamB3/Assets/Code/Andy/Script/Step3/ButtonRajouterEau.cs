@@ -1,39 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonRajouterEau : MonoBehaviour
 {
     public Slider slider;
-    Animator animButton;
-    bool mouseDown = false;
+    public Slider Eau;
+    bool ok = false;
+
     void Start()
     {
-        animButton = GetComponent<Animator>();
+        Eau.value = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(slider.value == 1 && ScriptMain.StepGame == 3)
         {
-            mouseDown = true;
+            ScriptMain.StepGame = 4;
         }
-        else if (Input.GetMouseButtonUp(0))
+        if (slider.value <= 1 && ScriptMain.StepGame == 3 && ok == false)
         {
-            mouseDown = false;
+            ok = true;
+            StartCoroutine(waterUI());
         }
-    }
-    public void HoldValve()
-    {
-        if(ScriptMain.StepGame == 3 && mouseDown == true)
-        {
-            slider.value += 0.01f;
-            animButton.SetBool("True", true);
-        }
-        
-        
+
     }
 
+    public void clickValue()
+    {
+        
+        if (slider.value <= 1 && ScriptMain.StepGame == 3)
+        {
+            Eau.value += 0.02f;
+            slider.value += 0.02f;
+        }
+        
+ 
+
+    }
+    IEnumerator waterUI()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        if (slider.value <= 1 && ScriptMain.StepGame == 3)
+        {
+            Eau.value -= 0.01f;
+            StartCoroutine(waterUI());
+        }
+    }
+    
 }
