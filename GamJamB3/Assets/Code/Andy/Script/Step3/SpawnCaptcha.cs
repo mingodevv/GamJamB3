@@ -5,9 +5,10 @@ using UnityEngine;
 public class SpawnCaptcha : MonoBehaviour
 {
     static public int rangeC = 0;
+    int rangeSpawn = 0;
     float delay;
     static public bool ok = false;
-    public GameObject CAPTCHpop;
+    public GameObject CAPTCHpop1, CAPTCHpop2, CAPTCHpop3;
     public GameObject pos;
     public static bool plus = false;
 
@@ -42,14 +43,41 @@ public class SpawnCaptcha : MonoBehaviour
     void randomSpawnF()
     {
         rangeC = 1;
-        delay = Random.Range(1f, 3f);
-        for (int i = 0; i < rangeC; i++)
-        {
-            Vector2 position = pos.transform.position;
-            Instantiate(CAPTCHpop, position, pos.transform.rotation, pos.transform);
-            plus = true;
+        rangeSpawn = Random.Range(1,4);
+        delay = Random.Range(1f, 2.5f);
 
+
+        if(rangeSpawn == 1)
+        {
+            for (int i = 0; i < rangeC; i++)
+            {
+                Vector2 position = pos.transform.position;
+                Instantiate(CAPTCHpop1, position, pos.transform.rotation, pos.transform);
+                plus = true;
+
+            }
         }
+        else if(rangeSpawn == 2)
+        {
+            for (int i = 0; i < rangeC; i++)
+            {
+                Vector2 position = pos.transform.position;
+                Instantiate(CAPTCHpop2, position, pos.transform.rotation, pos.transform);
+                plus = true;
+
+            }
+        }
+        else if (rangeSpawn == 3)
+        {
+            for (int i = 0; i < rangeC; i++)
+            {
+                Vector2 position = pos.transform.position;
+                Instantiate(CAPTCHpop3, position, pos.transform.rotation, pos.transform);
+                plus = true;
+
+            }
+        }
+        
 
     }
     IEnumerator waitForSpawn()

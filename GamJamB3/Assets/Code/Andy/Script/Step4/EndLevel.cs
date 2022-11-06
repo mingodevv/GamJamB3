@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class EndLevel : MonoBehaviour
 {
     bool ok = false;
-    public GameObject StopValve;
+    public GameObject StopValve, Txt;
+    public Slider slider;
     void Start()
     {
         
@@ -20,6 +21,7 @@ public class EndLevel : MonoBehaviour
         {
             ok = true;
             StopValve.SetActive(true);
+            Txt.SetActive(true);
             StartCoroutine(EndGame());
 
         }
@@ -27,7 +29,9 @@ public class EndLevel : MonoBehaviour
 
     IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.2f);
+        slider.value = 1f;
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("EndGame");
     }
 }

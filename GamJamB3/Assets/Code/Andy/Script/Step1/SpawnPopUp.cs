@@ -46,8 +46,8 @@ public class SpawnPopUp : MonoBehaviour
     {
         plus = 0;
         range = Random.Range(1, 5);
-        delay = Random.Range(1f,3f);  
-        for ( int i = 0; i < 1/*range*/; i++)
+        delay = Random.Range(1f,2.8f);  
+        for ( int i = 0; i < range; i++)
         {
             randomX = Random.Range(-50f, 50f);
             randomY = Random.Range(-50f, 50f);

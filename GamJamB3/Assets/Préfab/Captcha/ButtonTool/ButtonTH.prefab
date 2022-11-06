@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5715974449916328534}
   - component: {fileID: 7370552353933627620}
   - component: {fileID: 8098735067247133426}
-  - component: {fileID: 4774262086356955988}
+  - component: {fileID: 4342060399206071047}
   m_Layer: 5
-  m_Name: ButtonCB
+  m_Name: ButtonTH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -59.514, y: -53.789}
+  m_AnchoredPosition: {x: -52.371605, y: -58.444397}
   m_SizeDelta: {x: 133, y: 86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5715974449916328534
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ecf53a4fe5096c84eb2105ecb2db93b6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd888a75ddbce934c91e1f664d8c96f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: f9dcf757c068a6c49b2249cb2242ee21, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 0379931e1769cfe4499b621c8a0ef43f, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4774262086356955988}
+      - m_Target: {fileID: 4342060399206071047}
         m_TargetAssemblyTypeName: ButtonChoice, Assembly-CSharp
         m_MethodName: choiceB
         m_Mode: 1
@@ -134,7 +134,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4774262086356955988
+--- !u!114 &4342060399206071047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,4 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fad69b65bea5c418fce0b7790af15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisB: 0
+  ThisB: 1

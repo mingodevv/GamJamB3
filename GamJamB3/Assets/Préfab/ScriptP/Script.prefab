@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2929305210977724865}
   - component: {fileID: 2248312277569979627}
   - component: {fileID: 7579555245402346034}
+  - component: {fileID: 265804231}
+  - component: {fileID: 265804232}
   m_Layer: 0
   m_Name: Script
   m_TagString: Untagged
@@ -103,5 +105,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c30e5140ccacb7469d3bab01edb940c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CAPTCHpop: {fileID: 610303586357838049, guid: 7d8c3b3d6c759874895f9c8d4c2c75c1, type: 3}
+  CAPTCHpop1: {fileID: 610303586357838049, guid: 7d8c3b3d6c759874895f9c8d4c2c75c1, type: 3}
+  CAPTCHpop2: {fileID: 610303586357838049, guid: 776d8c1a12d5d8e4d90baa506e74ecda, type: 3}
+  CAPTCHpop3: {fileID: 610303586357838049, guid: 798f1388fcdda2e4e8c82915b978461c, type: 3}
   pos: {fileID: 0}
+--- !u!114 &265804231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351987236780212987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044323021f7529b4493e928de00cfe44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StopValve: {fileID: 0}
+  Txt: {fileID: 0}
+--- !u!114 &265804232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351987236780212987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceccfe743f82a2d4980d39a7702cbf04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopValve: {fileID: 0}
