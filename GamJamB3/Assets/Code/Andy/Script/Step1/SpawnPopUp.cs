@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
+
 
 public class SpawnPopUp : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class SpawnPopUp : MonoBehaviour
     public GameObject errorpop;
     public GameObject pos;
     public static int plus = 0;
+    public AudioSource errorS;
 
     public static int suppPop = 0;
     void Start()
@@ -55,6 +55,7 @@ public class SpawnPopUp : MonoBehaviour
             position.x += randomX;
             position.y += randomY;
             Instantiate(errorpop, position, pos.transform.rotation, pos.transform);
+            errorS.Play();
             plus++;
 
         }

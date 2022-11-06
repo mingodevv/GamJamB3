@@ -11,6 +11,7 @@ public class SpawnCaptcha : MonoBehaviour
     public GameObject CAPTCHpop1, CAPTCHpop2, CAPTCHpop3;
     public GameObject pos;
     public static bool plus = false;
+    public AudioSource CaptchaSound;
 
     public static int suppC = 0;
     void Start()
@@ -53,6 +54,7 @@ public class SpawnCaptcha : MonoBehaviour
             {
                 Vector2 position = pos.transform.position;
                 Instantiate(CAPTCHpop1, position, pos.transform.rotation, pos.transform);
+                CaptchaSound.Play();
                 plus = true;
 
             }
@@ -63,6 +65,7 @@ public class SpawnCaptcha : MonoBehaviour
             {
                 Vector2 position = pos.transform.position;
                 Instantiate(CAPTCHpop2, position, pos.transform.rotation, pos.transform);
+                CaptchaSound.Play();
                 plus = true;
 
             }
@@ -73,6 +76,7 @@ public class SpawnCaptcha : MonoBehaviour
             {
                 Vector2 position = pos.transform.position;
                 Instantiate(CAPTCHpop3, position, pos.transform.rotation, pos.transform);
+                CaptchaSound.Play();
                 plus = true;
 
             }

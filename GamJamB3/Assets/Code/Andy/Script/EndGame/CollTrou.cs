@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class CollTrou : MonoBehaviour
 {
     public Animator animFin;
+    public AudioSource clap;
     void Start()
     {
         
@@ -24,6 +25,7 @@ public class CollTrou : MonoBehaviour
             Destroy(collision.gameObject);
             animFin.SetBool("True", true);
             StartCoroutine(MenuMain());
+            clap.Play();
         }
     }
 

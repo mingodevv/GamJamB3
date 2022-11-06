@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor.PackageManager;
+
 
 
 public class TutoLoadingBar : MonoBehaviour
@@ -15,6 +15,8 @@ public class TutoLoadingBar : MonoBehaviour
     bool Click = true;
     public  float SliderValue = 0f;
     public GameObject pos;
+    public AudioSource Bib, errorSound, MainMusique;
+
 
     public Slider slider;
     public GameObject error;
@@ -30,6 +32,7 @@ public class TutoLoadingBar : MonoBehaviour
         Click = true;
         SliderValue = 0f;
         addFloat = 0.51f;
+        Bib.Play();
     }
 
     //Update
@@ -69,7 +72,8 @@ public class TutoLoadingBar : MonoBehaviour
             {
                 Vector2 position = pos.transform.position;
                 Instantiate(error, position, pos.transform.rotation, pos.transform );
-                
+                errorSound.Play();
+
             }
             ButtonBarScript.okTuto = false;
             Click = false;
@@ -138,6 +142,8 @@ public class TutoLoadingBar : MonoBehaviour
             ErrorScript.close = false;
             stepTutoNb = 0;
             ScriptMain.StepGame = 1;
+            Bib.Stop();
+            MainMusique.Play();
             StopCoroutine(FinTutoE());
         }
 

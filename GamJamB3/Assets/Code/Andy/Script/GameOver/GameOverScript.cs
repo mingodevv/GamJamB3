@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.PlayerSettings;
 
 public class GameOverScript : MonoBehaviour
 {
     bool end = false;
     public GameObject errorpop1;
     public GameObject pos2;
+    public AudioSource GameOverS;
     void Start()
     {
         end = false;
@@ -26,7 +26,7 @@ public class GameOverScript : MonoBehaviour
             {
                 Vector2 position = pos2.transform.position;
                 Instantiate(errorpop1, position, pos2.transform.rotation, pos2.transform);
-
+                GameOverS.Play();   
             }
         }
     }
